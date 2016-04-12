@@ -29,9 +29,12 @@ $select = $mysqli->query("SELECT id_obor, nazev FROM obory");
 
     <nav>
         <ul>
+
             <a href="index.php"><li>Studenti</li></a>
 
             <a href="obory.php"><li>Obory</li></a>
+
+            <a href="insert.php"><li>Vložit</li></a>
 
         </ul>
     </nav>

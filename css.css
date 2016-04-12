@@ -27,6 +27,7 @@
                 background: none repeat scroll 0% 0% rgba(255,255,255,0.75); 
                 padding-left: 10%;
                 padding-right: 10%;
+                height: 1000px;
         }
         div.footer
         {
@@ -80,6 +81,38 @@
                 nav li {display: block; width: 100%;} 
                 nav ul {width: 100%; padding-left: 0px;} 
                 nav a, nav a:hover {display: block; width: 100%; margin-left:0px; } }
+
+        input[type=text], select 
+        {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+        }
+
+        input[type=submit] 
+        {
+                width: 100%;
+                background-color: #8dbdd8;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+        }
+
+        input[type=submit]:hover 
+        {
+                background-color: #5a819f;
+        }
+
+        div.form 
+        {
+                background-color: #f2f2f2;
+                padding: 40px;
+        }       
 
 
         /* tables */

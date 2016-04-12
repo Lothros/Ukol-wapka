@@ -6,8 +6,19 @@ mysqli_set_charset($mysqli, "utf8");
 
 $vystup_select=$mysqli->query("SELECT * FROM studenti");
 
-$select = $mysqli->query("SELECT jméno, příjmení, město, obo.nazev FROM studenti AS stu LEFT JOIN obory AS obo ON stu.obory_id_obor=obo.ID_obor");
+        if (!empty($_POST)) {
+            $jmeno = $_POST["jmeno"];
+        $prijmeni = $_POST["prijmeni"];
+        $mesto = $_POST["mesto"];
+        $obor = $_POST["obor"];
+ 
+        $insert = $mysqli->query("INSERT INTO studenti (jméno, příjmení, město, obory_id_obor) VALUES ( '$jmeno','$prijmeni','$mesto','$obor')");
 
+        header('Location: index.php');
+
+        }
+
+        
 ?>
 
 <!DOCTYPE html>
@@ -41,46 +52,29 @@ $select = $mysqli->query("SELECT jméno, příjmení, město, obo.nazev FROM stu
 
     <div class="container">
 
-    <h1>Tabulka studentů</h1>
+    <h1>Přidání studenta</h1>
 
-        <?php
+        <form action="insert.php" method="post" target="_blank">
 
-        echo "<table id='tabulka1' class='tablesorter'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th>Jméno</th>";
-        echo "<th>Příjmení</th>";
-        echo "<th>Město</th>";
-        echo "<th>Studijní obor</th>";
-        echo "</tr>";
-        echo "</thead>";
+            Jméno: <input type="text" name="jmeno"><br>
+            
+            Příjmení: <input type="text" name="prijmeni"><br>
+            
+            Bydliště: <input type="text" name="mesto"><br>
+            
+            Obor: <select id="country" name="obor">
 
-		echo"<tbody>";
+                <option value="1">Informační technologie</option>
+                <option value="2">Grafický design</option>
+                <option value="3">Mechatronik</option>
 
-        while ($radek = $select->fetch_array()) {
+            </select><br>
 
-        	echo "<tr>";
+            <input type="submit" value="Vložit">
 
-            	echo "<td>" . $radek["jméno"] . "</td>";
+        </form>
 
-				echo "<td>" . $radek["příjmení"] . "</td>";
-
-				echo "<td>" . $radek["město"] . "</td>";
-
-                echo "<td>" . $radek["nazev"] . "</td>";
-
-            echo"</tr>";
-
-        }
-
-        echo"</tbody>";
-        echo "</table>";
-
-
-        $mysqli->close();
-        ?>                 
-
-     </div>
+    </div>
 
          
 	<script type='text/javascript'>
