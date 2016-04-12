@@ -8,14 +8,20 @@ $vystup_select=$mysqli->query("SELECT * FROM studenti");
 
         if (!empty($_POST)) {
             $jmeno = $_POST["jmeno"];
-        $prijmeni = $_POST["prijmeni"];
-        $mesto = $_POST["mesto"];
-        $obor = $_POST["obor"];
+            $prijmeni = $_POST["prijmeni"];
+            $mesto = $_POST["mesto"];
+            $obor = $_POST["obor"];
  
-        $insert = $mysqli->query("INSERT INTO studenti (jméno, příjmení, město, obory_id_obor) VALUES ( '$jmeno','$prijmeni','$mesto','$obor')");
+                if (!empty($jmeno) && !empty($prijmeni) && !empty($mesto) && !empty($obor)) {
 
-        header('Location: index.php');
+                    $insert = $mysqli->query("INSERT INTO studenti (jméno, příjmení, město, obory_id_obor) VALUES ( '$jmeno','$prijmeni','$mesto','$obor')");
+                    header('Location: index.php');
+                }
 
+                else {
+                    echo "<script>alert('Vyplňte prosím všechna pole.')</script>";
+                }
+        
         }
 
         
